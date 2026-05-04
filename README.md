@@ -25,12 +25,14 @@ Sentiment-IQ/
 
 ⚙️ Instalación y ejecución
 
-1. Clonar o descargar el proyecto
-Descarga la carpeta Sentiment-IQ y ábrela en Visual Studio Code.
+1. Clonar 
+  git clone https://github.com/pitsburg8280-cmyk/Sentiment-IQ.git
+   cd Sentiment-IQ
 
 2. Instalar dependencias
 Ejecuta en la terminal:
 pip install -r requirements.txt
+
 3. Ejecutar el programa
   python sentiment.py
 

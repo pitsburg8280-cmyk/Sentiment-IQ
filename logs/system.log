@@ -1,0 +1,5 @@
+2026-05-03 21:04:34 [WARNING]: Login inválido para usuario 'zelma'.
+2026-05-03 21:04:34 [INFO]: Usuario 'zelma' creado en la BD con rol 'cliente'.
+2026-05-03 21:05:00 [INFO]: Cliente 'zelma' agregó reseña: "esta bueno" -> Positivo
+2026-05-03 21:05:03 [INFO]: Consulta de reseñas realizada.
+2026-05-03 21:05:14 [INFO]: Sistema cerrado por el usuario.

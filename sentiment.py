@@ -2,8 +2,21 @@ import sqlite3
 import hashlib
 import csv
 import unicodedata
+import logging
+import os
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
+
+# ---------------- CONFIGURACIÓN DE LOGS ----------------
+if not os.path.exists("logs"):
+    os.makedirs("logs")
+
+logging.basicConfig(
+    filename="logs/system.log",
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s]: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
 # --- Clase Usuario ---
 class Usuario:
@@ -24,6 +37,7 @@ class Administrador(Usuario):
 
     def crear_usuario(self, nombre, rol, password, db):
         db.insertar_usuario(nombre, rol, password)
+        logging.info(f"Administrador creó usuario '{nombre}' con rol '{rol}'.")
 
 class Cliente(Usuario):
     def __init__(self, nombre, password):
@@ -33,6 +47,7 @@ class Cliente(Usuario):
         sentimiento = analyzer.predecir(texto)
         reseña = Reseña(texto, sentimiento)
         db.insertar_reseña(reseña)
+        logging.info(f"Cliente '{self.get_nombre()}' agregó reseña: \"{texto}\" -> {sentimiento}")
 
 # --- Clase Reseña ---
 class Reseña:
@@ -61,11 +76,16 @@ class SentimentDB:
         self.cursor.execute("INSERT INTO usuarios (nombre, rol, contraseña) VALUES (?,?,?)",
                             (nombre, rol, hashed))
         self.conn.commit()
+        logging.info(f"Usuario '{nombre}' creado en la BD con rol '{rol}'.")
 
     def validar_login(self, nombre, password):
         hashed = hashlib.sha256(password.encode()).hexdigest()
         user = self.cursor.execute("SELECT * FROM usuarios WHERE nombre=? AND contraseña=?",
                                    (nombre, hashed)).fetchone()
+        if user:
+            logging.info(f"Usuario '{nombre}' inició sesión correctamente.")
+        else:
+            logging.warning(f"Login inválido para usuario '{nombre}'.")
         return user
 
     def insertar_reseña(self, reseña):
@@ -74,14 +94,19 @@ class SentimentDB:
         self.conn.commit()
 
     def leer_reseñas(self):
-        return self.cursor.execute("SELECT * FROM reseñas").fetchall()
+        reseñas = self.cursor.execute("SELECT * FROM reseñas").fetchall()
+        logging.info("Consulta de reseñas realizada.")
+        return reseñas
 
     def exportar_csv(self, archivo="reports/reseñas.csv"):
+        if not os.path.exists("reports"):
+            os.makedirs("reports")
         reseñas = self.leer_reseñas()
         with open(archivo, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerow(["ID", "Texto", "Sentimiento"])
             writer.writerows(reseñas)
+        logging.info(f"Reporte exportado en {archivo}")
 
 # --- ML: Clasificación ---
 class SentimentAnalyzer:
@@ -122,17 +147,7 @@ def menu():
         "pesimo", "desastroso", "fallo", "inutil", "decepcionante",
         "muy caro", "molesto", "frustrante", "no funciona", "mala experiencia"
     ]
-    etiquetas = [
-        "Positivo","Positivo","Positivo","Positivo","Positivo",
-        "Positivo","Positivo","Positivo","Positivo","Positivo",
-        "Positivo","Positivo","Positivo","Positivo","Positivo",
-        "Positivo","Positivo","Positivo","Positivo","Positivo",
-        "Negativo","Negativo","Negativo","Negativo","Negativo",
-        "Negativo","Negativo","Negativo","Negativo","Negativo",
-        "Negativo","Negativo","Negativo","Negativo","Negativo",
-        "Negativo","Negativo","Negativo","Negativo","Negativo"
-    ]
-
+    etiquetas = ["Positivo"]*20 + ["Negativo"]*20
     sa.entrenar(textos, etiquetas)
 
     print("=== Sentiment-IQ ===")
@@ -167,6 +182,7 @@ def menu():
             print("Reporte exportado en reports/reseñas.csv")
         elif opcion == "4":
             print("Saliendo...")
+            logging.info("Sistema cerrado por el usuario.")
             break
         else:
             print("Opción inválida.")

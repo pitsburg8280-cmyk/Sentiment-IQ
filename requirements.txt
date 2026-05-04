@@ -1,1 +1,11 @@
-scikit-learn
+# Librerías principales para Sentiment-IQ
+pandas==2.2.2
+numpy>=2.0.0
+scikit-learn==1.4.2
+matplotlib==3.8.4
+
+# Procesamiento de texto
+nltk==3.8.1
+
+# Imágenes y utilidades
+Pillow==10.3.0
