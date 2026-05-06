@@ -4,6 +4,7 @@ import csv
 import unicodedata
 import logging
 import os
+import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
@@ -68,7 +69,8 @@ class SentimentDB:
         self.cursor.execute("""CREATE TABLE IF NOT EXISTS reseñas (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             texto TEXT,
-            sentimiento TEXT)""")
+            sentimiento TEXT,
+            fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP)""")
         self.conn.commit()
 
     def insertar_usuario(self, nombre, rol, password):
@@ -101,10 +103,10 @@ class SentimentDB:
     def exportar_csv(self, archivo="reports/reseñas.csv"):
         if not os.path.exists("reports"):
             os.makedirs("reports")
-        reseñas = self.leer_reseñas()
+        reseñas = self.cursor.execute("SELECT id, texto, sentimiento, fecha FROM reseñas").fetchall()
         with open(archivo, "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
-            writer.writerow(["ID", "Texto", "Sentimiento"])
+            writer.writerow(["ID", "Texto", "Sentimiento", "FechaHora"])
             writer.writerows(reseñas)
         logging.info(f"Reporte exportado en {archivo}")
 
@@ -136,18 +138,10 @@ def menu():
     db = SentimentDB()
     sa = SentimentAnalyzer()
 
-    # Dataset ampliado: 20 positivas y 20 negativas
-    textos = [
-        "el producto es excelente", "me gusto mucho", "funciona bien", "muy rapido", "positivo",
-        "gran calidad", "muy satisfecho", "lo recomiendo", "me encanto", "perfecto",
-        "bueno", "maravilloso", "fantastico", "increible", "mejor de lo esperado",
-        "muy util", "agradable", "eficiente", "vale la pena", "superior",
-        "el producto es malo", "no me gusto", "defectuoso", "muy lento", "terrible",
-        "negativo", "poca calidad", "muy insatisfecho", "no lo recomiendo", "horrible",
-        "pesimo", "desastroso", "fallo", "inutil", "decepcionante",
-        "muy caro", "molesto", "frustrante", "no funciona", "mala experiencia"
-    ]
-    etiquetas = ["Positivo"]*20 + ["Negativo"]*20
+    # Cargar dataset dinámico
+    data = pd.read_csv("data/dataset.csv")
+    textos = data["texto"].apply(lambda x: x.lower()).tolist()
+    etiquetas = data["sentimiento"].tolist()
     sa.entrenar(textos, etiquetas)
 
     print("=== Sentiment-IQ ===")

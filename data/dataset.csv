@@ -1,41 +1,99 @@
-texto, sentimiento
-El producto es excelente, Positivo
-Me gustó mucho, Positivo
-Funciona bien, Positivo
-Muy rápido, Positivo
-Gran calidad, Positivo
-Muy satisfecho, Positivo
-Lo recomiendo, Positivo
-Me encantó, Positivo
-Perfecto, Positivo
+texto,sentimiento
+El producto es excelente,Positivo
+Me gustó mucho,Positivo
+Funciona bien,Positivo
+Muy rápido,Positivo
+Gran calidad,Positivo
+Muy satisfecho,Positivo
+Lo recomiendo,Positivo
+Me encantó,Positivo
+Perfecto,Positivo
 Maravilloso,Positivo
-Fantástico, Positivo
-Increíble, Positivo
-Mejor de lo esperado, Positivo
-Muy útil, Positivo
-Agradable, Positivo
-Eficiente, Positivo
-Vale la pena, Positivo
+Fantástico,Positivo
+Increíble,Positivo
+Mejor de lo esperado,Positivo
+Muy útil,Positivo
+Agradable,Positivo
+Eficiente,Positivo
+Vale la pena,Positivo
 Superior,Positivo
-Buen servicio, Positivo
-Excelente experiencia, Positivo
-El producto es malo, Negativo
-No me gustó, Negativo
+Buen servicio,Positivo
+Excelente experiencia,Positivo
+La atención fue muy buena,Positivo
+El envío llegó rápido,Positivo
+El empaque estaba perfecto,Positivo
+Muy recomendable,Positivo
+El sistema funciona sin fallos,Positivo
+La calidad es sobresaliente,Positivo
+El soporte técnico fue excelente,Positivo
+Me resolvieron rápido,Positivo
+El diseño es atractivo,Positivo
+Muy práctico,Positivo
+La interfaz es intuitiva,Positivo
+El precio es justo,Positivo
+El rendimiento es alto,Positivo
+Me sorprendió gratamente,Positivo
+Muy confiable,Positivo
+El servicio al cliente fue amable fue sencilla,Positivo
+El manual fue claro,Positivo
+El producto cumplió mis expectativas,Positivo
+Muy innovador,Positivo
+La experiencia fue positiva,Positivo
+El sistema es seguro,Positivo
+La aplicación es útil,Positivo
+El software es estable,Positivo
+La compra fue fácil,Positivo
+El producto es duradero,Positivo
+Muy conveniente,Positivo
+La garantía es buena,Positivo
+El rendimiento es consistente,Positivo
+El producto es malo,Negativo
+No me gustó,Negativo
 Defectuoso,Negativo
-Muy lento, Negativo
-Terrible, Negativo
-Poca calidad, Negativo
-Muy insatisfecho, Negativo
-No lo recomiendo, Negativo
-Horrible, Negativo
-Pésimo, Negativo
-Desastroso, Negativo
-Falló, Negativo
-Inútil, Negativo
-Decepcionante, Negativo
+Muy lento,Negativo
+Terrible,Negativo
+Poca calidad,Negativo
+Muy insatisfecho,Negativo
+No lo recomiendo,Negativo
+Horrible,Negativo
+Pésimo,Negativo
+Desastroso,Negativo
+Falló,Negativo
+Inútil,Negativo
+Decepcionante,Negativo
 Muy caro,Negativo
-Molesto, Negativo
-Frustrante, Negativo
-No funciona, Negativo
-Mala experiencia, Negativo
-Servicio deficiente, Negativo
+Molesto,Negativo
+Frustrante,Negativo
+No funciona,Negativo
+Mala experiencia,Negativo
+Servicio deficiente,Negativo
+El envío tardó demasiado,Negativo
+El producto llegó dañado,Negativo
+La atención fue pésima,Negativo
+El empaque estaba roto,Negativo
+No cumplió lo prometido,Negativo
+El sistema se bloquea,Negativo
+La calidad es baja,Negativo
+El soporte técnico no ayudó,Negativo
+No resolvieron mi problema,Negativo
+El diseño es feo,Negativo
+Muy incómodo,Negativo
+La interfaz es confusa,Negativo
+El precio es excesivo,Negativo
+El rendimiento es bajo,Negativo
+Me decepcionó,Negativo
+Nada confiable,Negativo
+El servicio al cliente fue grosero,Negativo
+La instalación fue complicada,Negativo
+El manual fue confuso,Negativo
+El producto no cumplió expectativas,Negativo
+Muy anticuado,Negativo
+La experiencia fue negativa,Negativo
+El sistema es inseguro,Negativo
+La aplicación es inútil,Negativo
+El software es inestable,Negativo
+La compra fue difícil,Negativo
+El producto se dañó rápido,Negativo
+Muy inconveniente,Negativo
+La garantía es mala,Negativo
+El rendimiento es inconsistente,Negativo

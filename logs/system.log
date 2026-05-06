@@ -3,3 +3,14 @@
 2026-05-03 21:05:00 [INFO]: Cliente 'zelma' agregó reseña: "esta bueno" -> Positivo
 2026-05-03 21:05:03 [INFO]: Consulta de reseñas realizada.
 2026-05-03 21:05:14 [INFO]: Sistema cerrado por el usuario.
+2026-05-06 17:49:54 [WARNING]: Login inválido para usuario 'ruben'.
+2026-05-06 17:49:54 [INFO]: Usuario 'ruben' creado en la BD con rol 'cliente'.
+2026-05-06 17:50:08 [INFO]: Cliente 'ruben' agregó reseña: "producto excelente" -> Positivo
+2026-05-06 17:50:17 [INFO]: Consulta de reseñas realizada.
+2026-05-06 17:50:32 [INFO]: Sistema cerrado por el usuario.
+2026-05-06 17:53:27 [WARNING]: Login inválido para usuario 'rogelio'.
+2026-05-06 17:53:27 [INFO]: Usuario 'rogelio' creado en la BD con rol 'cliente'.
+2026-05-06 17:54:08 [INFO]: Consulta de reseñas realizada.
+2026-05-06 17:54:24 [INFO]: Consulta de reseñas realizada.
+2026-05-06 17:54:24 [INFO]: Reporte exportado en reports/reseñas.csv
+2026-05-06 18:01:38 [INFO]: Sistema cerrado por el usuario.

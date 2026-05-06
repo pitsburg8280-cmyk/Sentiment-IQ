@@ -1,3 +1,10 @@
 ID,Texto,Sentimiento
 1,El producto es excelente,Positivo
 2,El producto es excelente,Positivo
+3,cls,Negativo
+4,el producto me gusto mucho funciona bien,Negativo
+5,el producto me gusto mucho funciona bien,Positivo
+6,el producto me gusto es bueno y funciona,Positivo
+7,fue bueno,Positivo
+8,esta bueno,Positivo
+9,producto excelente,Positivo
